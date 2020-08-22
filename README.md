@@ -18,7 +18,7 @@
 
 	<dependencies>
 	    <dependency>
-                <groupId>com.github.AlbeMiglio</groupId>
+                <groupId>it.albemiglio</groupId>
 	        <artifactId>Nicky</artifactId>
 	        <version>1.0.2</version>
             </dependency>
