@@ -7,6 +7,7 @@
 #####################################################
 name: Nicky
 authors: [Melonking, AlbeMiglio]
+main: it.albemiglio.nicky.Nicky
 version: 1.0.1
 description: A simple remastered plugin for custom nicknames
 depend: [Vault, PowerLib]
