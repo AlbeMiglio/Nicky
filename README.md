@@ -20,7 +20,7 @@
 	    <dependency>
                 <groupId>com.github.AlbeMiglio</groupId>
 	        <artifactId>Nicky</artifactId>
-	        <version>1.0.1</version>
+	        <version>1.0.2</version>
             </dependency>
 	</dependencies>
 ```

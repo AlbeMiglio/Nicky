@@ -1,6 +1,6 @@
 #####################################################
 #                                                   #
-#               Nicky v1.0.1 - Remastered           #
+#               Nicky v1.0.2 - Remastered           #
 #     Credits to the original author, Melonking     #
 #           github.com/AlbeMiglio/Nicky             #
 #                                                   #
@@ -8,7 +8,7 @@
 name: Nicky
 authors: [Melonking, AlbeMiglio]
 main: it.albemiglio.nicky.Nicky
-version: 1.0.1
+version: 1.0.2
 description: A simple remastered plugin for custom nicknames
 depend: [Vault, PowerLib]
 
