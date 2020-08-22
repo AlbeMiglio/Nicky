@@ -1,0 +1,49 @@
+#####################################################
+#                                                   #
+#               Nicky v1.0.1 - Remastered           #
+#     Credits to the original author, Melonking     #
+#           github.com/AlbeMiglio/Nicky             #
+#                                                   #
+#####################################################
+
+Nicky-Help:
+  - "&e---------- [Nicky Help] ----------"
+  - "nicky.set|&a/nick <nick> &7- Sets your nickname."
+  - "nicky.del|&a/delnick &7- Deletes your nickname."
+  - "nicky.realname|&a/realname <search> &7- Lookup who owns a nick."
+  - "nicky.reload|&a/nicky reload &7- Reloads nicky config."
+  - "&a/nicky help &7- Loads this page."
+  -  "&e-------------------------------"
+
+Configurations-Reloaded-Successfully:
+  - "&e---------- [Nicky Reloaded] ----------"
+  - "&a'config.yml' reloaded successfully!"
+  - "&a'messages.yml' reloaded successfully!"
+  - "&e-------------------------------"
+
+Your-Nick-Has-Been-Deleted: "&eYour nickname has been deleted by {sender}."
+
+Could-Not-Find-Player: "&cCould not find '{name}', did you get the name right?"
+
+Player-Nick-Has-Been-Deleted: "&e{name}'s nickname has been deleted!"
+
+Not-Enough-Permissions: "&cI'm sorry, you don't have enough permissions."      # {perm} to see the lacking permission
+
+Search-Must-Be-More-Characters: "&cYour search must be at least {min} characters!"
+Your-Nick-Must-Be-More-Characters: "&cYour nick must be at least {min} characters!"
+Nick-Must-Be-More-Characters: "&cNicks must be at least {min} characters!"
+
+Nick-Syntax: "&eTo set a nick do &a/nick <nickname>"
+Realname-Syntax: "&eTo check a nickname do &a/realname <search>"
+
+Realname-No-Match-Found: "&aNo one has a nickname containing: &e{search}"
+
+Realname-Online-Matches-Found: "&aPlayers with a nickname containing: &e{search}"
+Realname-Offline-Matches-Found: "&aPlayers not on your server or offline:"
+Realname-Match: "&e{name} &7 -> &e{value}"
+
+Nick-Contains-Blacklisted-Word: "&cI'm sorry, the nick &e{name}&c contains a blacklisted word."
+Nick-Already-In-Use: "&cI'm sorry, the nick &e{name}&c is already in use."
+
+Your-Nick-Has-Been-Set: "&eYour nickname has been set to &a{name}&e!"
+Set-Player-Nick-To: "&eNick of &a{player}&e has been successfully set to &a{name}&e!"

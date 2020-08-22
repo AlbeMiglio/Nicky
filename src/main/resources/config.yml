@@ -1,0 +1,29 @@
+#####################################################
+#                                                   #
+#               Nicky v1.0.1 - Remastered           #
+#     Credits to the original author, Melonking     #
+#           github.com/AlbeMiglio/Nicky             #
+#                                                   #
+#####################################################
+
+type: sqlite        # Available storage types:  MySQL, SQLite
+host: localhost
+port: 3306
+user: root
+password: password
+database: nicky
+
+nicky-prefix: "&e[Nicky] &a"
+tab: true                         #    Should names in the tablist be updated?
+unique: true                      #    Should all nicknames be unique?
+prefix: "&e~"                     #    Add a prefix before nicknames? (Set to '' to disable)
+min-length: 3
+max-length: 20
+characters: "[^a-zA-Z0-9_§]"      #    RegEx for characters allowed in a nickname. (Set to '' to allow every character)
+blacklist:                        #    Write here words that cannot appear in any nickname.
+  - Melonking                     #    Bypass the blacklist with the permission 'nicky.noblacklist'
+  - AlbeMiglio
+  - Admin
+enable-join-leave-messages: true
+join-message: "&e{name} &ahas connected!"
+leave-message: "&e{name} &chas disconnected!"
