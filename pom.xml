@@ -50,7 +50,7 @@
             <url>https://hub.spigotmc.org/repositories/snapshots/</url>
         </repository>
         <repository>
-            <id>jitpack-repo</id>
+            <id>jitpack.io</id>
             <url>https://jitpack.io/</url>
         </repository>
     </repositories>
