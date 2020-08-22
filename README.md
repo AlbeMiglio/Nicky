@@ -18,10 +18,10 @@
 
 	<dependencies>
 	    <dependency>
-            <groupId>com.github.AlbeMiglio</groupId>
+                <groupId>com.github.AlbeMiglio</groupId>
 	        <artifactId>Nicky</artifactId>
 	        <version>1.0.1</version>
-        </dependency>
+            </dependency>
 	</dependencies>
 ```
 ## Configuration files
