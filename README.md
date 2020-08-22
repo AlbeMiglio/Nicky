@@ -16,11 +16,13 @@
 		</repository>
 	</repositories>
 
-	<dependency>
-	    <groupId>com.github.AlbeMiglio</groupId>
-	    <artifactId>Nicky</artifactId>
-	    <version>1.0.1</version>
-	</dependency>
+	<dependencies>
+	    <dependency>
+            <groupId>com.github.AlbeMiglio</groupId>
+	        <artifactId>Nicky</artifactId>
+	        <version>1.0.1</version>
+        </dependency>
+	</dependencies>
 ```
 ## Configuration files
 These are the main configurations of the plugin. You can fully customize them as far as you prefer:
