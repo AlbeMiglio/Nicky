@@ -31,9 +31,9 @@ public class PlayerListener implements Listener {
         Nick nick = new Nick(player);
         if (Nicky.getInstance().getFileManager().isUseJoinLeaveEnabled()) {
             event.setQuitMessage(null);
-            String message = new Message(Nicky.getInstance().getFileManager().getLeaveMessage())
-                    .addPlaceHolder("{name}", getNicknameOrName(nick)).getText();
-            Bukkit.broadcastMessage(color(message));
+            Message m = new Message(color(Nicky.getInstance().getFileManager().getLeaveMessage()))
+                    .addPlaceHolder("{name}", getNicknameOrName(nick));
+            Bukkit.broadcastMessage(m.getText());
         }
         nick.unLoad();
     }
