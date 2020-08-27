@@ -1,6 +1,5 @@
 package it.albemiglio.nicky.commands;
 
-import it.albemiglio.nicky.FileManager;
 import it.albemiglio.nicky.Nick;
 import it.albemiglio.nicky.Nicky;
 import it.albemiglio.nicky.databases.SQL;
@@ -26,7 +25,7 @@ public class RealNameCMD implements CommandExecutor {
 
     private HashMap<String, String> offlinePlayers = new HashMap<>();
 
-    private FileManager fm = Nicky.getInstance().getFileManager();
+    private Nicky plugin = Nicky.getInstance();
 
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         runAsPlayer(sender, args);
@@ -36,42 +35,42 @@ public class RealNameCMD implements CommandExecutor {
     private void runAsPlayer(CommandSender sender, String[] args) {
         if (sender.hasPermission("nicky.realname")) {
             if (args.length < 1) {
-                new Message(color(this.fm.getPluginPrefix() + this.fm.getMessages().getString("Realname-Syntax")))
+                new Message(color(this.plugin.getFileManager().getPluginPrefix() + this.plugin.getFileManager().getMessages().getString("Realname-Syntax")))
                         .send(sender);
                 return;
             }
             String search = args[0];
             int minSearchLength = 3;
-            if (3 < this.fm.getMinLength())
-                minSearchLength = this.fm.getMinLength();
+            if (3 < this.plugin.getFileManager().getMinLength())
+                minSearchLength = this.plugin.getFileManager().getMinLength();
             if (search.length() < minSearchLength) {
-                String searchMustBeMoreCharacters = this.fm.getMessages().getString("Search-Must-Be-More-Characters");
-                new Message(color(this.fm.getPluginPrefix() + searchMustBeMoreCharacters))
+                String searchMustBeMoreCharacters = this.plugin.getFileManager().getMessages().getString("Search-Must-Be-More-Characters");
+                new Message(color(this.plugin.getFileManager().getPluginPrefix() + searchMustBeMoreCharacters))
                         .addPlaceHolder("{min}", minSearchLength)
                         .send(sender);
                 return;
             }
             findPlayers(search);
             if (this.foundPlayers.isEmpty()) {
-                new Message(color(this.fm.getPluginPrefix() + this.fm.getMessages().getString("Realname-No-Match-Found")))
+                new Message(color(this.plugin.getFileManager().getPluginPrefix() + this.plugin.getFileManager().getMessages().getString("Realname-No-Match-Found")))
                         .addPlaceHolder("{search}", args[0])
                         .send(sender);
             } else {
-                new Message(color(this.fm.getPluginPrefix() + this.fm.getMessages().getString("Realname-Online-Matches-Found")))
+                new Message(color(this.plugin.getFileManager().getPluginPrefix() + this.plugin.getFileManager().getMessages().getString("Realname-Online-Matches-Found")))
                         .addPlaceHolder("{search}", args[0])
                         .send(sender);
                 for (Map.Entry<String, String> player : this.foundPlayers.get("online").entrySet()) {
-                    new Message(color(this.fm.getPluginPrefix() + this.fm.getMessages().getString("Realname-Match")))
+                    new Message(color(this.plugin.getFileManager().getPluginPrefix() + this.plugin.getFileManager().getMessages().getString("Realname-Match")))
                             .addPlaceHolder("{name}", player.getKey())
                             .addPlaceHolder("{value}", player.getValue())
                             .send(sender);
                 }
                 if (!this.foundPlayers.get("offline").isEmpty()) {
-                    new Message(color(this.fm.getPluginPrefix() + this.fm.getMessages().getString("Realname-Offline-Matches-Found")))
+                    new Message(color(this.plugin.getFileManager().getPluginPrefix() + this.plugin.getFileManager().getMessages().getString("Realname-Offline-Matches-Found")))
                             .addPlaceHolder("{search}", args[0])
                             .send(sender);
                     for (Map.Entry<String, String> player : this.foundPlayers.get("offline").entrySet()) {
-                        new Message(color(this.fm.getPluginPrefix() + this.fm.getMessages().getString("Realname-Match")))
+                        new Message(color(this.plugin.getFileManager().getPluginPrefix() + this.plugin.getFileManager().getMessages().getString("Realname-Match")))
                                 .addPlaceHolder("{name}", player.getKey())
                                 .addPlaceHolder("{value}", player.getValue())
                                 .send(sender);
@@ -79,8 +78,8 @@ public class RealNameCMD implements CommandExecutor {
                 }
             }
         } else {
-            String notEnoughPermissions = this.fm.getMessages().getString("Not-Enough-Permissions");
-            new Message(color(this.fm.getPluginPrefix() + notEnoughPermissions))
+            String notEnoughPermissions = this.plugin.getFileManager().getMessages().getString("Not-Enough-Permissions");
+            new Message(color(this.plugin.getFileManager().getPluginPrefix() + notEnoughPermissions))
                     .addPlaceHolder("{perm}", "nicky.realname")
                     .send(sender);
         }

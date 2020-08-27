@@ -6,7 +6,7 @@
 
     <groupId>it.albemiglio</groupId>
     <artifactId>Nicky</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <build>
         <plugins>
             <plugin>
@@ -56,9 +56,9 @@
     </repositories>
     <dependencies>
         <dependency>
-            <groupId>it.albemiglio</groupId>
+            <groupId>it.albemiglio.PowerLib</groupId>
             <artifactId>PowerLib</artifactId>
-            <version>1.0.9</version>
+            <version>1.1.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

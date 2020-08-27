@@ -1,6 +1,5 @@
 package it.albemiglio.nicky.commands;
 
-import it.albemiglio.nicky.FileManager;
 import it.albemiglio.nicky.Nicky;
 import it.albemiglio.nicky.commands.subcommands.HelpCMD;
 import it.albemiglio.nicky.commands.subcommands.ReloadCMD;
@@ -18,12 +17,10 @@ import static it.mycraft.powerlib.utils.ColorAPI.color;
 public class NickyCMD implements CommandExecutor {
 
     private Nicky plugin;
-    private FileManager fm;
     private final List<SubCommand> commands;
 
     public NickyCMD(Nicky plugin) {
         this.plugin = plugin;
-        this.fm = this.plugin.getFileManager();
         this.commands = new ArrayList<>();
         this.commands.add(new HelpCMD());
         this.commands.add(new ReloadCMD(plugin));
@@ -36,8 +33,8 @@ public class NickyCMD implements CommandExecutor {
         for (SubCommand command : this.commands) {
             if (command.getName().equalsIgnoreCase(subCommand)) {
                 if (!sender.hasPermission(command.getPermission())) {
-                    String notEnoughPermissions = this.fm.getMessages().getString("Not-Enough-Permissions");
-                    new Message(color(this.fm.getPluginPrefix()+notEnoughPermissions))
+                    String notEnoughPermissions = this.plugin.getFileManager().getMessages().getString("Not-Enough-Permissions");
+                    new Message(color(this.plugin.getFileManager().getPluginPrefix()+notEnoughPermissions))
                             .addPlaceHolder("{perm}", command.getPermission())
                             .send(sender);
                     return true;

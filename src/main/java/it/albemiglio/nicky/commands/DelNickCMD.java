@@ -1,6 +1,5 @@
 package it.albemiglio.nicky.commands;
 
-import it.albemiglio.nicky.FileManager;
 import it.albemiglio.nicky.Nick;
 import it.albemiglio.nicky.Nicky;
 import it.mycraft.powerlib.chat.Message;
@@ -15,11 +14,9 @@ import static it.mycraft.powerlib.utils.ColorAPI.color;
 public class DelNickCMD implements CommandExecutor {
 
     private Nicky plugin;
-    private FileManager fm;
 
     public DelNickCMD(Nicky plugin) {
         this.plugin = plugin;
-        this.fm = this.plugin.getFileManager();
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
@@ -38,21 +35,21 @@ public class DelNickCMD implements CommandExecutor {
             OfflinePlayer receiver = this.plugin.getServer().getOfflinePlayer(args[0]);
             if (!receiver.hasPlayedBefore()) {
                 this.plugin.log(
-                        new Message(color(this.fm.getMessages().getString("Could-Not-Find-Player") + ""))
+                        new Message(color(this.plugin.getFileManager().getMessages().getString("Could-Not-Find-Player") + ""))
                                 .addPlaceHolder("{name}", args[0]).getText());
                 return;
             }
             Nick nick = new Nick(receiver);
             nick.unSet();
             if (receiver.isOnline()) {
-                String yourNickHasBeenDeleted = this.fm.getMessages().getString("Your-Nick-Has-Been-Deleted");
-                new Message(color(this.fm.getPluginPrefix() + yourNickHasBeenDeleted))
+                String yourNickHasBeenDeleted = this.plugin.getFileManager().getMessages().getString("Your-Nick-Has-Been-Deleted");
+                new Message(color(this.plugin.getFileManager().getPluginPrefix() + yourNickHasBeenDeleted))
                         .addPlaceHolder("{sender}", "Console")
                         .send(receiver.getPlayer());
             }
-            String playerNickHasBeenDeleted = this.fm.getMessages().getString("Player-Nick-Has-Been-Deleted");
+            String playerNickHasBeenDeleted = this.plugin.getFileManager().getMessages().getString("Player-Nick-Has-Been-Deleted");
             this.plugin.log(
-                    new Message(color(this.fm.getPluginPrefix() + playerNickHasBeenDeleted))
+                    new Message(color(this.plugin.getFileManager().getPluginPrefix() + playerNickHasBeenDeleted))
                             .addPlaceHolder("{name}", receiver.getName()).getText());
         } else {
             this.plugin.log("Usage: /delnick <name>");
@@ -62,7 +59,7 @@ public class DelNickCMD implements CommandExecutor {
     public void runAsAdmin(CommandSender sender, String[] args) {
         OfflinePlayer receiver = this.plugin.getServer().getOfflinePlayer(args[0]);
         if (!receiver.hasPlayedBefore()) {
-            new Message(color(this.fm.getPluginPrefix() + this.fm.getMessages().getString("Could-Not-Find-Player")))
+            new Message(color(this.plugin.getFileManager().getPluginPrefix() + this.plugin.getFileManager().getMessages().getString("Could-Not-Find-Player")))
                     .addPlaceHolder("{name}", args[0]).send(sender);
             return;
         }
@@ -70,17 +67,17 @@ public class DelNickCMD implements CommandExecutor {
             Nick nick = new Nick(receiver);
             nick.unSet();
             if (receiver.isOnline()) {
-                String yourNickHasBeenDeleted = this.fm.getMessages().getString("Your-Nick-Has-Been-Deleted");
-                new Message(color(this.fm.getPluginPrefix() + yourNickHasBeenDeleted))
+                String yourNickHasBeenDeleted = this.plugin.getFileManager().getMessages().getString("Your-Nick-Has-Been-Deleted");
+                new Message(color(this.plugin.getFileManager().getPluginPrefix() + yourNickHasBeenDeleted))
                         .addPlaceHolder("{sender}", "Console")
                         .send(receiver.getPlayer());
-                String playerNickHasBeenDeleted = this.fm.getMessages().getString("Player-Nick-Has-Been-Deleted");
-                new Message(color(this.fm.getPluginPrefix() + playerNickHasBeenDeleted))
+                String playerNickHasBeenDeleted = this.plugin.getFileManager().getMessages().getString("Player-Nick-Has-Been-Deleted");
+                new Message(color(this.plugin.getFileManager().getPluginPrefix() + playerNickHasBeenDeleted))
                         .addPlaceHolder("{name}", receiver.getName()).send(sender);
             }
         } else {
-            String notEnoughPermissions = this.fm.getMessages().getString("Not-Enough-Permissions");
-            new Message(color(this.fm.getPluginPrefix() + notEnoughPermissions))
+            String notEnoughPermissions = this.plugin.getFileManager().getMessages().getString("Not-Enough-Permissions");
+            new Message(color(this.plugin.getFileManager().getPluginPrefix() + notEnoughPermissions))
                     .addPlaceHolder("{perm}", "nicky.del.other")
                     .send(sender);
         }
@@ -90,13 +87,13 @@ public class DelNickCMD implements CommandExecutor {
         if (sender.hasPermission("nicky.del")) {
             Nick nick = new Nick((Player) sender);
             nick.unSet();
-            String yourNickHasBeenDeleted = this.fm.getMessages().getString("Your-Nick-Has-Been-Deleted");
-            new Message(color(this.fm.getPluginPrefix() + yourNickHasBeenDeleted))
+            String yourNickHasBeenDeleted = this.plugin.getFileManager().getMessages().getString("Your-Nick-Has-Been-Deleted");
+            new Message(color(this.plugin.getFileManager().getPluginPrefix() + yourNickHasBeenDeleted))
                     .addPlaceHolder("{sender}", sender.getName())
                     .send(sender);
         } else {
-            String notEnoughPermissions = this.fm.getMessages().getString("Not-Enough-Permissions");
-            new Message(color(this.fm.getPluginPrefix() + notEnoughPermissions))
+            String notEnoughPermissions = this.plugin.getFileManager().getMessages().getString("Not-Enough-Permissions");
+            new Message(color(this.plugin.getFileManager().getPluginPrefix() + notEnoughPermissions))
                     .addPlaceHolder("{perm}", "nicky.del")
                     .send(sender);
         }

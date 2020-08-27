@@ -20,7 +20,7 @@
 	    <dependency>
                 <groupId>it.albemiglio</groupId>
 	        <artifactId>Nicky</artifactId>
-	        <version>1.0.2</version>
+	        <version>1.0.3</version>
             </dependency>
 	</dependencies>
 ```

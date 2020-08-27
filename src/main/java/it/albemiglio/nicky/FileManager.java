@@ -67,7 +67,6 @@ public class FileManager {
         this.configManager.create("config.yml");
         this.configManager.create("messages.yml");
         this.setBlacklist(new ArrayList<>());
-        this.configManager.reloadAll();
         reloadConfig();
         reloadMessages();
     }
@@ -83,15 +82,18 @@ public class FileManager {
             tabsUsed = getConfig().getBoolean("tab");
             unique = getConfig().getBoolean("unique");
             nickPrefix = getConfig().get("prefix").toString();
-            maxLength = Integer.parseInt(getConfig().get("max-length").toString());
-            minLength = Integer.parseInt(getConfig().get("min-length").toString());
+            minLength = getConfig().getInt("min-length");
+            maxLength = getConfig().getInt("max-length");
             characters = getConfig().get("characters").toString();
             blacklist.clear();
             blacklist = getConfig().getStringList("blacklist");
             useJoinLeaveEnabled = getConfig().getBoolean("enable-join-leave-messages");
             joinMessage = color(getConfig().getString("join-message"));
+            this.main.log("11");
             leaveMessage = color(getConfig().getString("leave-message"));
-        } catch (Exception ignored) {
+            this.main.log("12");
+        } catch (Exception ex) {
+            ex.printStackTrace();
             this.main.log("Warning - You have an error in your config.");
         }
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
