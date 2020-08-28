@@ -89,9 +89,7 @@ public class FileManager {
             blacklist = getConfig().getStringList("blacklist");
             useJoinLeaveEnabled = getConfig().getBoolean("enable-join-leave-messages");
             joinMessage = color(getConfig().getString("join-message"));
-            this.main.log("11");
             leaveMessage = color(getConfig().getString("leave-message"));
-            this.main.log("12");
         } catch (Exception ex) {
             ex.printStackTrace();
             this.main.log("Warning - You have an error in your config.");
